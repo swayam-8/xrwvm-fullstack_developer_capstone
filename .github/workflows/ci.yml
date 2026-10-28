@@ -1,0 +1,32 @@
+name: Capstone checks
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:7
+        ports: ["27017:27017"]
+        options: >-
+          --health-cmd "mongosh --quiet --eval 'db.adminCommand({ping:1}).ok'"
+          --health-interval 10s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build React
+        run: npm ci --prefix server/frontend && npm run build --prefix server/frontend
+      - name: Install Python services
+        run: pip install -r server/requirements.txt -r server/djangoapp/microservices/requirements.txt
+      - name: Django account and API checks
+        run: python server/manage.py test djangoapp && python server/manage.py makemigrations --check --dry-run
+      - name: Sentiment checks
+        working-directory: server/djangoapp/microservices
+        run: python -m unittest test_sentiment
+      - name: MongoDB and Express integration
+        working-directory: server/database
+        run: npm ci && npm test
