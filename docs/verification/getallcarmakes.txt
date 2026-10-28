@@ -1,0 +1,803 @@
+$ curl --fail-with-body --silent --show-error http://127.0.0.1:8000/djangoapp/get_cars
+{
+  "status": 200,
+  "CarMakes": [
+    {
+      "id": 1,
+      "name": "Nissan",
+      "description": "Vehicles manufactured by Nissan"
+    },
+    {
+      "id": 2,
+      "name": "Kia",
+      "description": "Vehicles manufactured by Kia"
+    },
+    {
+      "id": 3,
+      "name": "Audi",
+      "description": "Vehicles manufactured by Audi"
+    },
+    {
+      "id": 4,
+      "name": "Mercedes",
+      "description": "Vehicles manufactured by Mercedes"
+    },
+    {
+      "id": 5,
+      "name": "Toyota",
+      "description": "Vehicles manufactured by Toyota"
+    }
+  ],
+  "CarModels": [
+    {
+      "id": 1,
+      "CarMake": "Nissan",
+      "CarModel": "Pathfinder",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 2,
+      "CarMake": "Kia",
+      "CarModel": "Seltos",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 3,
+      "CarMake": "Audi",
+      "CarModel": "A4",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 4,
+      "CarMake": "Mercedes",
+      "CarModel": "GLE",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 5,
+      "CarMake": "Toyota",
+      "CarModel": "Camry",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 6,
+      "CarMake": "Nissan",
+      "CarModel": "Rogue",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 7,
+      "CarMake": "Kia",
+      "CarModel": "Telluride",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 8,
+      "CarMake": "Audi",
+      "CarModel": "Q5",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 9,
+      "CarMake": "Mercedes",
+      "CarModel": "C-Class",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 10,
+      "CarMake": "Toyota",
+      "CarModel": "Highlander",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 11,
+      "CarMake": "Nissan",
+      "CarModel": "Altima",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 12,
+      "CarMake": "Kia",
+      "CarModel": "Sportage",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 13,
+      "CarMake": "Audi",
+      "CarModel": "A3",
+      "year": 2020,
+      "type": "Hatchback"
+    },
+    {
+      "id": 14,
+      "CarMake": "Mercedes",
+      "CarModel": "E-Class",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 15,
+      "CarMake": "Toyota",
+      "CarModel": "RAV4",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 16,
+      "CarMake": "Nissan",
+      "CarModel": "Maxima",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 17,
+      "CarMake": "Kia",
+      "CarModel": "Cadenza",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 18,
+      "CarMake": "Audi",
+      "CarModel": "Q7",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 19,
+      "CarMake": "Mercedes",
+      "CarModel": "GLC",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 20,
+      "CarMake": "Toyota",
+      "CarModel": "Corolla",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 21,
+      "CarMake": "Nissan",
+      "CarModel": "Murano",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 22,
+      "CarMake": "Kia",
+      "CarModel": "Optima",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 23,
+      "CarMake": "Audi",
+      "CarModel": "S5",
+      "year": 2022,
+      "type": "Coupe"
+    },
+    {
+      "id": 24,
+      "CarMake": "Mercedes",
+      "CarModel": "S-Class",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 25,
+      "CarMake": "Toyota",
+      "CarModel": "Sienna",
+      "year": 2020,
+      "type": "Minivan"
+    },
+    {
+      "id": 26,
+      "CarMake": "Nissan",
+      "CarModel": "370Z",
+      "year": 2023,
+      "type": "Coupe"
+    },
+    {
+      "id": 27,
+      "CarMake": "Kia",
+      "CarModel": "Rio",
+      "year": 2022,
+      "type": "Hatchback"
+    },
+    {
+      "id": 28,
+      "CarMake": "Audi",
+      "CarModel": "TT",
+      "year": 2021,
+      "type": "Convertible"
+    },
+    {
+      "id": 29,
+      "CarMake": "Mercedes",
+      "CarModel": "CLA",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 30,
+      "CarMake": "Toyota",
+      "CarModel": "Tacoma",
+      "year": 2023,
+      "type": "Pickup"
+    },
+    {
+      "id": 31,
+      "CarMake": "Nissan",
+      "CarModel": "Versa",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 32,
+      "CarMake": "Kia",
+      "CarModel": "Stinger",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 33,
+      "CarMake": "Audi",
+      "CarModel": "A5",
+      "year": 2020,
+      "type": "Convertible"
+    },
+    {
+      "id": 34,
+      "CarMake": "Mercedes",
+      "CarModel": "GLA",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 35,
+      "CarMake": "Toyota",
+      "CarModel": "Prius",
+      "year": 2022,
+      "type": "Hatchback"
+    },
+    {
+      "id": 36,
+      "CarMake": "Nissan",
+      "CarModel": "Armada",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 37,
+      "CarMake": "Kia",
+      "CarModel": "Niro",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 38,
+      "CarMake": "Audi",
+      "CarModel": "Q3",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 39,
+      "CarMake": "Mercedes",
+      "CarModel": "GLE Coupe",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 40,
+      "CarMake": "Toyota",
+      "CarModel": "Avalon",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 41,
+      "CarMake": "Nissan",
+      "CarModel": "Sentra",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 42,
+      "CarMake": "Kia",
+      "CarModel": "Soul",
+      "year": 2023,
+      "type": "Hatchback"
+    },
+    {
+      "id": 43,
+      "CarMake": "Audi",
+      "CarModel": "S7",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 44,
+      "CarMake": "Mercedes",
+      "CarModel": "GLB",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 45,
+      "CarMake": "Toyota",
+      "CarModel": "4Runner",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 46,
+      "CarMake": "Nissan",
+      "CarModel": "Juke",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 47,
+      "CarMake": "Kia",
+      "CarModel": "Forte",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 48,
+      "CarMake": "Audi",
+      "CarModel": "Q8",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 49,
+      "CarMake": "Mercedes",
+      "CarModel": "A-Class",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 50,
+      "CarMake": "Toyota",
+      "CarModel": "Tundra",
+      "year": 2023,
+      "type": "Pickup"
+    },
+    {
+      "id": 51,
+      "CarMake": "Nissan",
+      "CarModel": "Versa",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 52,
+      "CarMake": "Kia",
+      "CarModel": "Forte",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 53,
+      "CarMake": "Mercedes",
+      "CarModel": "A-Class",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 54,
+      "CarMake": "Toyota",
+      "CarModel": "Prius",
+      "year": 2021,
+      "type": "Hatchback"
+    },
+    {
+      "id": 55,
+      "CarMake": "Kia",
+      "CarModel": "Niro",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 56,
+      "CarMake": "Audi",
+      "CarModel": "A6",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 57,
+      "CarMake": "Mercedes",
+      "CarModel": "GLA",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 58,
+      "CarMake": "Toyota",
+      "CarModel": "Yaris",
+      "year": 2020,
+      "type": "Hatchback"
+    },
+    {
+      "id": 59,
+      "CarMake": "Nissan",
+      "CarModel": "Cube",
+      "year": 2023,
+      "type": "Hatchback"
+    },
+    {
+      "id": 60,
+      "CarMake": "Kia",
+      "CarModel": "Stinger",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 61,
+      "CarMake": "Audi",
+      "CarModel": "A5",
+      "year": 2021,
+      "type": "Convertible"
+    },
+    {
+      "id": 62,
+      "CarMake": "Mercedes",
+      "CarModel": "GLS",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 63,
+      "CarMake": "Toyota",
+      "CarModel": "4Runner",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 64,
+      "CarMake": "Nissan",
+      "CarModel": "Juke",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 65,
+      "CarMake": "Kia",
+      "CarModel": "Soul",
+      "year": 2021,
+      "type": "Hatchback"
+    },
+    {
+      "id": 66,
+      "CarMake": "Audi",
+      "CarModel": "Q8",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 67,
+      "CarMake": "Mercedes",
+      "CarModel": "AMG GT",
+      "year": 2023,
+      "type": "Coupe"
+    },
+    {
+      "id": 68,
+      "CarMake": "Toyota",
+      "CarModel": "Avalon",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 69,
+      "CarMake": "Kia",
+      "CarModel": "Telluride",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 70,
+      "CarMake": "Audi",
+      "CarModel": "S3",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 71,
+      "CarMake": "Mercedes",
+      "CarModel": "M-Class",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 72,
+      "CarMake": "Toyota",
+      "CarModel": "Land Cruiser",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 73,
+      "CarMake": "Nissan",
+      "CarModel": "370Z",
+      "year": 2020,
+      "type": "Coupe"
+    },
+    {
+      "id": 74,
+      "CarMake": "Kia",
+      "CarModel": "Rio",
+      "year": 2023,
+      "type": "Hatchback"
+    },
+    {
+      "id": 75,
+      "CarMake": "Audi",
+      "CarModel": "Q5",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 76,
+      "CarMake": "Mercedes",
+      "CarModel": "C-Class",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 77,
+      "CarMake": "Toyota",
+      "CarModel": "Highlander",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 78,
+      "CarMake": "Nissan",
+      "CarModel": "Versa",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 79,
+      "CarMake": "Audi",
+      "CarModel": "Q3",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 80,
+      "CarMake": "Mercedes",
+      "CarModel": "GLC",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 81,
+      "CarMake": "Toyota",
+      "CarModel": "Corolla",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 82,
+      "CarMake": "Nissan",
+      "CarModel": "Murano",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 83,
+      "CarMake": "Kia",
+      "CarModel": "Optima",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 84,
+      "CarMake": "Audi",
+      "CarModel": "S5",
+      "year": 2023,
+      "type": "Coupe"
+    },
+    {
+      "id": 85,
+      "CarMake": "Mercedes",
+      "CarModel": "S-Class",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 86,
+      "CarMake": "Toyota",
+      "CarModel": "Sienna",
+      "year": 2021,
+      "type": "Minivan"
+    },
+    {
+      "id": 87,
+      "CarMake": "Nissan",
+      "CarModel": "Altima",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 88,
+      "CarMake": "Kia",
+      "CarModel": "Sportage",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 89,
+      "CarMake": "Audi",
+      "CarModel": "A3",
+      "year": 2022,
+      "type": "Hatchback"
+    },
+    {
+      "id": 90,
+      "CarMake": "Mercedes",
+      "CarModel": "E-Class",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 91,
+      "CarMake": "Toyota",
+      "CarModel": "RAV4",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 92,
+      "CarMake": "Nissan",
+      "CarModel": "Maxima",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 93,
+      "CarMake": "Kia",
+      "CarModel": "Cadenza",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 94,
+      "CarMake": "Audi",
+      "CarModel": "Q7",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 95,
+      "CarMake": "Mercedes",
+      "CarModel": "GLC",
+      "year": 2020,
+      "type": "SUV"
+    },
+    {
+      "id": 96,
+      "CarMake": "Toyota",
+      "CarModel": "Yaris",
+      "year": 2023,
+      "type": "Hatchback"
+    },
+    {
+      "id": 97,
+      "CarMake": "Nissan",
+      "CarModel": "Cube",
+      "year": 2022,
+      "type": "Hatchback"
+    },
+    {
+      "id": 98,
+      "CarMake": "Mercedes",
+      "CarModel": "GLS",
+      "year": 2023,
+      "type": "SUV"
+    },
+    {
+      "id": 99,
+      "CarMake": "Toyota",
+      "CarModel": "4Runner",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 100,
+      "CarMake": "Nissan",
+      "CarModel": "Juke",
+      "year": 2021,
+      "type": "SUV"
+    },
+    {
+      "id": 101,
+      "CarMake": "Kia",
+      "CarModel": "Soul",
+      "year": 2020,
+      "type": "Hatchback"
+    },
+    {
+      "id": 102,
+      "CarMake": "Audi",
+      "CarModel": "TT",
+      "year": 2023,
+      "type": "Convertible"
+    },
+    {
+      "id": 103,
+      "CarMake": "Mercedes",
+      "CarModel": "CLA",
+      "year": 2022,
+      "type": "Sedan"
+    },
+    {
+      "id": 104,
+      "CarMake": "Toyota",
+      "CarModel": "Tacoma",
+      "year": 2021,
+      "type": "Pickup"
+    },
+    {
+      "id": 105,
+      "CarMake": "Nissan",
+      "CarModel": "Versa",
+      "year": 2020,
+      "type": "Sedan"
+    },
+    {
+      "id": 106,
+      "CarMake": "Kia",
+      "CarModel": "Forte",
+      "year": 2023,
+      "type": "Sedan"
+    },
+    {
+      "id": 107,
+      "CarMake": "Audi",
+      "CarModel": "Q3",
+      "year": 2022,
+      "type": "SUV"
+    },
+    {
+      "id": 108,
+      "CarMake": "Mercedes",
+      "CarModel": "A-Class",
+      "year": 2021,
+      "type": "Sedan"
+    },
+    {
+      "id": 109,
+      "CarMake": "Toyota",
+      "CarModel": "Prius",
+      "year": 2020,
+      "type": "Hatchback"
+    },
+    {
+      "id": 110,
+      "CarMake": "Nissan",
+      "CarModel": "Armada",
+      "year": 2022,
+      "type": "SUV"
+    }
+  ]
+}
