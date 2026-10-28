@@ -20,7 +20,12 @@ env['backend_url'] = 'http://127.0.0.1:3030'
 env['sentiment_analyzer_url'] = 'http://127.0.0.1:5050'
 python = root / '.venv/bin/python'
 def run(args): subprocess.run([str(x) for x in args],check=True,env=env)
-if not python.exists(): run([sys.executable,'-m','venv','.venv'])
+if not python.exists():
+    try:
+        run([sys.executable,'-m','venv','.venv'])
+    except subprocess.CalledProcessError:
+        run([sys.executable,'-m','pip','install','--user','virtualenv'])
+        run([sys.executable,'-m','virtualenv','--clear','.venv'])
 run([python,'-m','pip','install','-r','server/requirements.txt','-r','server/djangoapp/microservices/requirements.txt'])
 run(['npm','ci','--prefix','server/frontend'])
 run(['npm','run','build','--prefix','server/frontend'])

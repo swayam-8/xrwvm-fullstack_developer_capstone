@@ -1,0 +1,389 @@
+{
+  "apiVersion": "v1",
+  "kind": "List",
+  "items": [
+    {
+      "apiVersion": "v1",
+      "kind": "PersistentVolumeClaim",
+      "metadata": {
+        "name": "bestcars-mongo"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "1Gi"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "PersistentVolumeClaim",
+      "metadata": {
+        "name": "bestcars-web"
+      },
+      "spec": {
+        "accessModes": [
+          "ReadWriteOnce"
+        ],
+        "resources": {
+          "requests": {
+            "storage": "1Gi"
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "bestcars-mongo"
+      },
+      "spec": {
+        "replicas": 1,
+        "strategy": {
+          "type": "Recreate"
+        },
+        "selector": {
+          "matchLabels": {
+            "app": "bestcars-mongo"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "bestcars-mongo"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "mongo",
+                "image": "mongo:7",
+                "ports": [
+                  {
+                    "containerPort": 27017
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  },
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "1Gi"
+                  }
+                },
+                "volumeMounts": [
+                  {
+                    "name": "data",
+                    "mountPath": "/data/db"
+                  }
+                ]
+              }
+            ],
+            "volumes": [
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "bestcars-mongo"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "bestcars-mongo"
+      },
+      "spec": {
+        "selector": {
+          "app": "bestcars-mongo"
+        },
+        "ports": [
+          {
+            "port": 27017,
+            "targetPort": 27017
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "bestcars-dealers"
+      },
+      "spec": {
+        "replicas": 1,
+        "strategy": {
+          "type": "Recreate"
+        },
+        "selector": {
+          "matchLabels": {
+            "app": "bestcars-dealers"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "bestcars-dealers"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "dealers",
+                "image": "bestcars-dealers:local",
+                "ports": [
+                  {
+                    "containerPort": 3030
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  },
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "1Gi"
+                  }
+                },
+                "env": [
+                  {
+                    "name": "MONGO_URL",
+                    "value": "mongodb://bestcars-mongo:27017/dealershipsDB"
+                  }
+                ],
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/health",
+                    "port": 3030
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 10
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "bestcars-dealers"
+      },
+      "spec": {
+        "selector": {
+          "app": "bestcars-dealers"
+        },
+        "ports": [
+          {
+            "port": 3030,
+            "targetPort": 3030
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "bestcars-sentiment"
+      },
+      "spec": {
+        "replicas": 1,
+        "strategy": {
+          "type": "Recreate"
+        },
+        "selector": {
+          "matchLabels": {
+            "app": "bestcars-sentiment"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "bestcars-sentiment"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "sentiment",
+                "image": "bestcars-sentiment:local",
+                "ports": [
+                  {
+                    "containerPort": 5050
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  },
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "1Gi"
+                  }
+                },
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/",
+                    "port": 5050
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 10
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "bestcars-sentiment"
+      },
+      "spec": {
+        "selector": {
+          "app": "bestcars-sentiment"
+        },
+        "ports": [
+          {
+            "port": 5050,
+            "targetPort": 5050
+          }
+        ]
+      }
+    },
+    {
+      "apiVersion": "apps/v1",
+      "kind": "Deployment",
+      "metadata": {
+        "name": "bestcars-web"
+      },
+      "spec": {
+        "replicas": 1,
+        "strategy": {
+          "type": "Recreate"
+        },
+        "selector": {
+          "matchLabels": {
+            "app": "bestcars-web"
+          }
+        },
+        "template": {
+          "metadata": {
+            "labels": {
+              "app": "bestcars-web"
+            }
+          },
+          "spec": {
+            "containers": [
+              {
+                "name": "web",
+                "image": "bestcars-web:local",
+                "ports": [
+                  {
+                    "containerPort": 8000
+                  }
+                ],
+                "resources": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "256Mi"
+                  },
+                  "limits": {
+                    "cpu": "1",
+                    "memory": "1Gi"
+                  }
+                },
+                "env": [
+                  {
+                    "name": "DJANGO_SECRET_KEY",
+                    "valueFrom": {
+                      "secretKeyRef": {
+                        "name": "bestcars-secrets",
+                        "key": "django-secret"
+                      }
+                    }
+                  },
+                  {
+                    "name": "ALLOWED_HOSTS",
+                    "value": "localhost,127.0.0.1"
+                  },
+                  {
+                    "name": "backend_url",
+                    "value": "http://bestcars-dealers:3030"
+                  },
+                  {
+                    "name": "sentiment_analyzer_url",
+                    "value": "http://bestcars-sentiment:5050"
+                  },
+                  {
+                    "name": "DATABASE_PATH",
+                    "value": "/data/db.sqlite3"
+                  }
+                ],
+                "readinessProbe": {
+                  "httpGet": {
+                    "path": "/",
+                    "port": 8000
+                  },
+                  "initialDelaySeconds": 10,
+                  "periodSeconds": 10
+                },
+                "volumeMounts": [
+                  {
+                    "name": "data",
+                    "mountPath": "/data"
+                  }
+                ]
+              }
+            ],
+            "volumes": [
+              {
+                "name": "data",
+                "persistentVolumeClaim": {
+                  "claimName": "bestcars-web"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "apiVersion": "v1",
+      "kind": "Service",
+      "metadata": {
+        "name": "bestcars-web"
+      },
+      "spec": {
+        "selector": {
+          "app": "bestcars-web"
+        },
+        "ports": [
+          {
+            "port": 8000,
+            "targetPort": 8000
+          }
+        ]
+      }
+    }
+  ]
+}

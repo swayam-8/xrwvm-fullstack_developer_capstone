@@ -44,3 +44,11 @@ Start MongoDB locally, then run `npm start --prefix server/database`, `.venv/bin
 ```
 
 Express tests require MongoDB and use disposable test reviews. GitHub Actions provisions MongoDB, builds React, and runs Django, sentiment and API integration checks. A successful build alone does not establish cloud deployment; deployment evidence must come from a running environment.
+
+## Kubernetes deployment
+
+`deploy/kubernetes.json` defines four Deployments and Services plus persistent claims for MongoDB and Django. Build `bestcars-web:local` from `server`, `bestcars-dealers:local` from `server/database`, and `bestcars-sentiment:local` from `server/djangoapp/microservices`; load these images into your cluster or replace their names with your registry images. Create the `bestcars-secrets` Secret with a randomly generated `django-secret` key before applying the manifest. Update the web `ALLOWED_HOSTS` environment value to your actual application hostname. Apply using `kubectl apply -f deploy/kubernetes.json`; use `kubectl port-forward service/bestcars-web 8000:8000` for localhost access.
+
+## Current verification status
+
+React builds successfully. Seven Django tests, three sentiment cases, and two Express/MongoDB integration tests pass. The application was run in the Skills Network lab, and dealership listing, Kansas filtering, and static pages were verified in the browser. Kubernetes provisioning returned an environment error; the Kubernetes manifest has not been run. GitHub Actions execution has not been verified. No claim of a submitted assignment, grade, or certificate is made.
