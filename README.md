@@ -51,4 +51,4 @@ Express tests require MongoDB and use disposable test reviews. GitHub Actions pr
 
 ## Current verification status
 
-React builds successfully. Seven Django tests, three sentiment cases, and two Express/MongoDB integration tests pass. The application was run in the Skills Network lab, and dealership listing, Kansas filtering, and static pages were verified in the browser. Kubernetes provisioning returned an environment error; the Kubernetes manifest has not been run. GitHub Actions execution has not been verified. No claim of a submitted assignment, grade, or certificate is made.
+React builds successfully. Seven Django tests, three sentiment cases, and two Express/MongoDB integration tests pass. The application was run in the Skills Network lab, and dealership listing, Kansas filtering, and static pages were verified in the browser. The basic lab could not provision Kubernetes; a Kubernetes-enabled lab is now being used for deployment. GitHub Actions run #3 completed successfully, including all build and test steps. No claim of a submitted assignment, grade, or certificate is made.
