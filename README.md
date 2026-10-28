@@ -55,6 +55,8 @@ Express tests require MongoDB and use disposable test reviews. GitHub Actions pr
 
 ## Current verification status
 
-React builds successfully. Seven Django tests, three sentiment cases, and two Express/MongoDB integration tests pass. The application was run in the Skills Network lab, and dealership listing, Kansas filtering, and static pages were verified in the browser. Four services are running in the assigned Skills Network Kubernetes namespace. The deployed landing page loads all 50 dealerships. The lab deployment uses disposable pod storage; the base manifest provides persistent-volume claims for a persistent environment. GitHub Actions run #3 completed successfully, including all build and test steps. No claim of a submitted assignment, grade, or certificate is made.
+React builds successfully. Eight Django tests, three sentiment cases, and two Express/MongoDB integration tests pass. The application was run in the Skills Network lab, and dealership listing, Kansas filtering, and static pages were verified in the browser. Four services are running in the assigned Skills Network Kubernetes namespace. The deployed landing page loads all 50 dealerships. The lab deployment uses disposable pod storage; the base manifest provides persistent-volume claims for a persistent environment. GitHub Actions run #3 completed successfully, including all build and test steps. No claim of a submitted assignment, grade, or certificate is made.
 
 The lab deployment URL is recorded in `docs/verification/deploymentURL.txt`. Lab URLs remain available only while the Skills Network session and port-forward are active. Actual read-only cURL responses are in `docs/verification`. Logged-in browser screenshots and final assessment submission are still pending user review.
+
+The assigned-lab deployment script tags images by commit and uses SQLite backup/restore during an upgrade to preserve existing application accounts and sessions.
