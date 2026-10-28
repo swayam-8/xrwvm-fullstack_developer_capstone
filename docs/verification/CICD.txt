@@ -1,0 +1,18 @@
+Source: https://github.com/swayam-8/xrwvm-fullstack_developer_capstone/actions/runs/40704268271
+Actual job-log excerpts (ANSI color codes removed):
+
+2026-10-28T14:16:46.1727445Z ##[group]Run npm ci --prefix server/frontend && npm run build --prefix server/frontend
+2026-10-28T14:16:49.1655761Z ✓ built in 805ms
+2026-10-28T14:16:56.8536968Z ##[group]Run python server/manage.py test djangoapp && python server/manage.py makemigrations --check --dry-run
+2026-10-28T14:17:00.5915006Z Ran 7 tests in 2.881s
+2026-10-28T14:17:00.5915498Z OK
+2026-10-28T14:17:01.0018692Z ##[group]Run python -m unittest test_sentiment
+2026-10-28T14:17:01.4436437Z OK
+2026-10-28T14:17:01.4911281Z ##[group]Run npm ci && npm test
+2026-10-28T14:17:03.5307038Z # Subtest: seeded dealers, filter, dealer and reviews
+2026-10-28T14:17:03.5313889Z ok 1 - seeded dealers, filter, dealer and reviews
+2026-10-28T14:17:03.5716437Z # Subtest: posted reviews persist and receive unique ids
+2026-10-28T14:17:03.5717646Z ok 2 - posted reviews persist and receive unique ids
+2026-10-28T14:17:03.5873706Z # tests 2
+2026-10-28T14:17:03.5874600Z # pass 2
+2026-10-28T14:17:03.5875047Z # fail 0
