@@ -1,0 +1,11 @@
+{
+  "name": "fullstack-developer-capstone-checks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "eslint server/frontend/src server/database --ignore-pattern \"**/node_modules/**\""
+  },
+  "devDependencies": {
+    "eslint": "^9.39.0"
+  }
+}

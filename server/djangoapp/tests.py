@@ -42,3 +42,12 @@ class AccountAndReviewTests(TestCase):
     def test_static_information_pages(self):
         self.assertContains(self.client.get('/about'),'Meet our team')
         self.assertContains(self.client.get('/contact'),'support@bestcars.example')
+
+class LogoutCompatibilityTests(TestCase):
+    def test_get_logout_clears_authenticated_session(self):
+        user=User.objects.create_user('logout_fixture',password='TestOnly!2026')
+        self.client.force_login(user)
+        response=self.client.get('/djangoapp/logout')
+        self.assertEqual(response.status_code,200)
+        self.assertEqual(response.json()['userName'],'')
+        self.assertIsNone(self.client.get('/djangoapp/user').json()['userName'])

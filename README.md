@@ -1,4 +1,8 @@
-# BestCars — Full Stack Dealership Reviews
+# fullstack_developer_capstone — BestCars Dealership Reviews
+
+Project name: **fullstack_developer_capstone**.
+Repository name: **xrwvm-fullstack_developer_capstone**.
+Application name: **BestCars**.
 
 IBM Full Stack Application Development Capstone, based on the official starter repository. Implementation prepared with AI assistance; review and understand the code before using it in an assessed submission.
 

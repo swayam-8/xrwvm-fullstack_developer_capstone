@@ -9,7 +9,7 @@ from django.core.validators import validate_email
 from django.db import IntegrityError, transaction
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.http import require_POST, require_GET
+from django.views.decorators.http import require_POST, require_GET, require_http_methods
 from . import restapis
 from .models import CarMake, CarModel
 
@@ -39,10 +39,10 @@ def login_user(request):
 
 
 @csrf_exempt
-@require_POST
+@require_http_methods(["GET", "POST"])
 def logout_request(request):
     logout(request)
-    return JsonResponse({'status': 200, 'message': 'Successfully logged out'})
+    return JsonResponse({'status': 200, 'userName': '', 'message': 'Successfully logged out'})
 
 
 @csrf_exempt
