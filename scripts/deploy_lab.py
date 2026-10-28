@@ -4,6 +4,7 @@ import os
 from pathlib import Path
 import re
 import secrets
+import socket
 import subprocess
 root=Path(__file__).resolve().parents[1]
 os.chdir(root)
@@ -13,9 +14,14 @@ namespace=run(['kubectl','config','view','--minify','-o','jsonpath={..namespace}
 if not re.fullmatch(r'sn-labs-[a-z0-9-]+',namespace):
     raise SystemExit('Select your assigned Skills Network namespace before deploying.')
 registry='us.icr.io/'+namespace
+# The lab Docker bridge may not inherit working DNS. Resolve the public package
+# hosts through the lab resolver and pass normal host mappings into build steps.
+build_hosts=[]
+for domain in ['registry.npmjs.org','pypi.org','files.pythonhosted.org']:
+    build_hosts.extend(['--add-host',domain+':'+socket.gethostbyname(domain)])
 for name,directory in [('dealers','server/database'),('sentiment','server/djangoapp/microservices'),('web','server')]:
     image=registry+'/bestcars-'+name+':v1'
-    run(['docker','build','-t',image,directory])
+    run(['docker','build',*build_hosts,'-t',image,directory])
     run(['docker','push',image])
 manifest=json.loads((root/'deploy/kubernetes.json').read_text())
 # The lab is disposable: use pod-local demonstration storage where claims are unavailable.
